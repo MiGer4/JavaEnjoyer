@@ -9,8 +9,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 //import org.testng.collections.Objects;
 
-
-
 public class AppTest {
 
 	@Test(dataProvider = "integerProvider")
@@ -56,7 +54,7 @@ public class AppTest {
 
 	@DataProvider
 	public Object[][] switchProvider() {
-		return new Object[][] { { 3, 31 }, { 6, 30 }, {2, 28} };
+		return new Object[][] { { 3, 31 }, { 6, 30 }, { 2, 28 } };
 	}
 
 	///////////////////////////////////////////////////
@@ -68,14 +66,14 @@ public class AppTest {
 
 	@DataProvider
 	public Object[][] forProvider() {
-        int[] output1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int[] output2 = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
-		return new Object[][] { { 1, output1 }, { 100, output2 }};
+		int[] output1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		int[] output2 = { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 };
+		return new Object[][] { { 1, output1 }, { 100, output2 } };
 	}
 
 	///////////////////////////////////////////////////
 
-		//////////////////////////////////////////
+	//////////////////////////////////////////
 
 	@Test(dataProvider = "whileProvider")
 	public void whileTest(int n, boolean c) {
@@ -105,13 +103,12 @@ public class AppTest {
 
 	@DataProvider
 	public Object[][] arrayProvider() {
-		return new Object[][] { { 10, 1, 2, new double[] {1, 2, 4, 8, 16, 32, 64, 128, 256, 512} }, { 3, 1, -1/3, new double[] {1, -1/3, 1/9} }};
+		return new Object[][] { { 10, 1, 2, new double[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 } },
+				{ 3, 1, -1 / 3, new double[] { 1, -1 / 3, 1 / 9 } } };
 	}
 
-	
-
 	//////////////////////////////////////////
-	
+
 	@Test(dataProvider = "matrixProvider")
 	public void twoDimensionArrayTest(int m, int n, int[] array, int[][] output) {
 		assertEquals(new App().twoDimensionArrayTask(m, n, array), output);
@@ -119,27 +116,26 @@ public class AppTest {
 
 	@DataProvider
 	public Object[][] matrixProvider() {
-		
-        int[] input = {1, 2, 3, 4};
 
-		return new Object[][] {{3, 4, input, new int[][] {input, input, input}}};
+		int[] input = { 1, 2, 3, 4 };
+
+		return new Object[][] { { 3, 4, input, new int[][] { input, input, input } } };
 	}
-	
-    @Test(expectedExceptions = AssertionError.class, dataProvider = "negativeMatrixProvider")
-    public void negativeDimensionArrayTest(int m, int n, int[] array){
-        new App().twoDimensionArrayTask(m, n, array);
-    }
 
-    @DataProvider
-    public Object[][] negativeMatrixProvider()
-    {
-        int[] input = {1, 2, 3, 4, 5};
-        return new Object[][] {{3, 4, input}};
-    }
+	@Test(expectedExceptions = AssertionError.class, dataProvider = "negativeMatrixProvider")
+	public void negativeDimensionArrayTest(int m, int n, int[] array) {
+		new App().twoDimensionArrayTask(m, n, array);
+	}
+
+	@DataProvider
+	public Object[][] negativeMatrixProvider() {
+		int[] input = { 1, 2, 3, 4, 5 };
+		return new Object[][] { { 3, 4, input } };
+	}
 
 	@Test
-	public void arrayTest2(){
-		assertEquals(new int[]{2, 3}, new int[]{2, 3});
+	public void arrayTest2() {
+		assertEquals(new int[] { 2, 3 }, new int[] { 2, 3 });
 	}
-	
+
 }

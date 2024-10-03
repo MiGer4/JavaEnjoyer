@@ -76,7 +76,7 @@ public class App {
 	/**
 	 * 
 	 * @param k is integer number
-	 * @return 
+	 * @return
 	 */
 	public int[] forTask(int k) {
 		int[] result = new int[10];
