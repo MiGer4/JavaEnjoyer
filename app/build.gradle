@@ -8,6 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -15,9 +16,31 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    lombok = '1.18.34'
+    mockito = '5.12.0'
+}
+
 dependencies {
     // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation group: 'org.testng', name: 'testng', version: '7.10.2'
+
+
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+
+    compileOnly "org.projectlombok:lombok:$lombok"
+    annotationProcessor "org.projectlombok:lombok:$lombok"
+
+    testCompileOnly "org.projectlombok:lombok:$lombok"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombok"
+
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+
+    testImplementation 'org.mockito:mockito-core:' + mockito
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation 'org.mockito:mockito-junit-jupiter:' + mockito
 
 }
 
@@ -35,5 +58,24 @@ application {
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
-    useTestNG()
+    useJUnitPlatform()
+
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+    toolVersion = "0.8.12"
+//    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
 }
