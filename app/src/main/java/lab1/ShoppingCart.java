@@ -3,6 +3,8 @@ package lab1;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * The {@code Shopping Cart} class represents an accounting record for a specific
  * shopping cart, including details such as the customer, purchase date, delivery address,
@@ -20,6 +22,7 @@ import java.util.Objects;
  */
 public class ShoppingCart {
     private Customer customer;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate purchaseDate;
     private Address address;
     private boolean status;

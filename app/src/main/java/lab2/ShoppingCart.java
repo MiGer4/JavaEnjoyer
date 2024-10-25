@@ -3,6 +3,10 @@ package lab2;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The {@code Shopping Cart} class represents an accounting record for a specific
  * shopping cart, including details such as the customer, purchase date, delivery address,
@@ -20,11 +24,13 @@ import java.util.Objects;
  */
 public class ShoppingCart {
     private Customer customer;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate purchaseDate;
     private Address address;
     private boolean status;
 
-    public ShoppingCart(Customer customer, LocalDate purchaseDate, Address address, boolean status) {
+    @JsonCreator
+    public ShoppingCart(@JsonProperty("customer") Customer customer, @JsonProperty("purchaseDate") LocalDate purchaseDate, @JsonProperty("address") Address address, @JsonProperty("status") boolean status) {
         this.customer = customer;
         this.purchaseDate = purchaseDate;
         this.address = address;

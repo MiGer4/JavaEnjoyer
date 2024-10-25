@@ -2,6 +2,9 @@ package lab2;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 /**
  * The {@code Customer} class represents an accounting record for a specific
@@ -21,7 +24,8 @@ public class Customer {
     private Address address;
     private String phone;
 
-    public Customer(String firstName, String lastName, Address address, String phone) {
+    @JsonCreator
+    public Customer(@JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("address") Address address, @JsonProperty("phone") String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
