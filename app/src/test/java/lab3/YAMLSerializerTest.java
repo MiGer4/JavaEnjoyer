@@ -31,30 +31,30 @@ public class YAMLSerializerTest {
 
     @Test
     void fromEntityTest() throws IOException {
-        String exString = "---\r\n" + //
-                        "customer:\r\n" + //
-                        "  firstName: \"Misha\"\r\n" + //
-                        "  lastName: \"Hordei\"\r\n" + //
-                        "  address:\r\n" + //
-                        "    country: \"Ukraine\"\r\n" + //
-                        "    city: \"Mamaivtsi\"\r\n" + //
-                        "    street: \"Nothehe\"\r\n" + //
-                        "    number: 52\r\n" + //
-                        "  phone: \"+380999516532\"\r\n" + //
-                        "purchaseDate: \"2024-09-20\"\r\n" + //
-                        "address:\r\n" + //
-                        "  country: \"Ukraine\"\r\n" + //
-                        "  city: \"Mamaivtsi\"\r\n" + //
-                        "  street: \"Nothehe\"\r\n" + //
-                        "  number: 52\r\n" + //
-                        "status: true\r\n";
-        assertEquals(exString, yamlSerializer.fromEntity(shoppingCart1));
+        String exString = "---\n" + //
+                        "customer:\n" + //
+                        "  firstName: \"Misha\"\n" + //
+                        "  lastName: \"Hordei\"\n" + //
+                        "  address:\n" + //
+                        "    country: \"Ukraine\"\n" + //
+                        "    city: \"Mamaivtsi\"\n" + //
+                        "    street: \"Nothehe\"\n" + //
+                        "    number: 52\n" + //
+                        "  phone: \"+380999516532\"\n" + //
+                        "purchaseDate: \"2024-09-20\"\n" + //
+                        "address:\n" + //
+                        "  country: \"Ukraine\"\n" + //
+                        "  city: \"Mamaivtsi\"\n" + //
+                        "  street: \"Nothehe\"\n" + //
+                        "  number: 52\n" + //
+                        "status: true\n";
+                        assertEquals(exString,  yamlSerializer.fromEntity(shoppingCart1));
     }
 
     @Test
     void fromEntityListTest() throws IOException {
-        String exString = "---\r\n" + //
-                        "- customer:\r\n" + //
+        String exString = "---\n" + //
+                        "- customer:\n" + //
                         "    firstName: \"Misha\"\n" + //
                         "    lastName: \"Hordei\"\n" + //
                         "    address:\n" + //
